@@ -217,21 +217,28 @@ export default function App() {
             {/* Input Area */}
             <div className="p-6 bg-white flex-1 overflow-y-auto flex flex-col gap-4">
               
-              <form onSubmit={addSegment} className="flex gap-0 shadow-sm rounded-md overflow-hidden ring-1 ring-gray-200 focus-within:ring-2 focus-within:ring-gray-400">
+              <form
+                onSubmit={addSegment}
+                className="flex flex-col sm:flex-row gap-2 sm:gap-0 shadow-sm rounded-md overflow-hidden ring-1 ring-gray-200 focus-within:ring-2 focus-within:ring-gray-400"
+              >
                 <input
                   type="text"
+                  aria-label="Add choice"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Input text here..."
-                  className="flex-1 px-4 py-3 bg-gray-100 outline-none text-gray-700 placeholder-gray-500"
+                  placeholder="Add a choice..."
+                  className="flex-1 px-4 py-3 bg-gray-100 outline-none text-gray-700 placeholder-gray-500 rounded-md sm:rounded-none"
                   disabled={isSpinning}
                 />
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   disabled={!inputValue.trim() || isSpinning}
-                  className="bg-gray-200 px-4 text-gray-600 hover:bg-gray-300 transition-colors flex items-center justify-center border-l border-white"
+                  title="Add choice"
+                  className={`w-full sm:w-auto px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center justify-center rounded-md sm:rounded-none ${(!inputValue.trim() || isSpinning) ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                  <Plus size={24} />
+                  <Plus size={18} />
+                  <span className="ml-2 hidden sm:inline">Add</span>
                 </button>
               </form>
 
